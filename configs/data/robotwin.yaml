@@ -1,0 +1,53 @@
+train:
+  _target_: rewam.datasets.robot_video_dataset.RobotVideoDataset
+  dataset_root: ${oc.env:ROBOTWIN_DATA_ROOT,./data/robotwin2.0}
+  shape_meta:
+    images:
+    - key: cam_high
+    - key: cam_left_wrist
+    - key: cam_right_wrist
+    action:
+    - key: default
+      shape: 14
+    state:
+    - key: default
+      shape: 14
+  action_horizon: 64
+  observation_stride: 8
+  num_context_frames: ${model.temporal_bottleneck.patch_size.0}
+  history_repeat_probability: 0.1
+  val_set_proportion: 0.01
+  is_training_set: true
+  dataset_norm_stats: null
+  video_backend: null
+  skip_padding_as_possible: false
+  concat_multi_camera: robotwin
+  processor:
+    _target_: rewam.datasets.processor.ReWAMProcessor
+    shape_meta: ${data.train.shape_meta}
+    norm_default_mode: z-score
+    transforms:
+    - _target_: torchvision.transforms.ConvertImageDtype
+      dtype:
+        _target_: hydra.utils.get_object
+        path: torch.float32
+    - _target_: torchvision.transforms.Resize
+      size: [240, 320]
+  text_embed_cache: ${oc.env:ROBOTWIN_TEXT_CACHE,./data/robotwin2.0/text_embeds}
+  context_len: ${model.text_encoder.max_length}
+val:
+  _target_: ${data.train._target_}
+  dataset_root: ${data.train.dataset_root}
+  shape_meta: ${data.train.shape_meta}
+  action_horizon: ${data.train.action_horizon}
+  observation_stride: ${data.train.observation_stride}
+  num_context_frames: ${data.train.num_context_frames}
+  val_set_proportion: ${data.train.val_set_proportion}
+  dataset_norm_stats: ${data.train.dataset_norm_stats}
+  video_backend: ${data.train.video_backend}
+  skip_padding_as_possible: ${data.train.skip_padding_as_possible}
+  concat_multi_camera: ${data.train.concat_multi_camera}
+  processor: ${data.train.processor}
+  text_embed_cache: ${data.train.text_embed_cache}
+  context_len: ${data.train.context_len}
+  is_training_set: false

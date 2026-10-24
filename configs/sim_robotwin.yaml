@@ -1,0 +1,47 @@
+# @package _global_
+defaults:
+  - train
+  - override /task: robotwin_rewam
+  - _self_
+
+ckpt: null
+gpu_id: 0
+
+model:
+  load_text_encoder: true
+
+EVALUATION:
+  robotwin_root: third_party/RoboTwin
+  policy_name: rewam_policy
+  task_name: null
+  task_config: demo_randomized
+  instruction_type: unseen
+  eval_num_episodes: 100
+  output_dir: outputs/robotwin_eval/${hydra:runtime.choices.task}/${now:%Y%m%d_%H%M%S}
+
+  # Action inference
+  compile_action_infer: false
+  action_horizon: null
+  replan_steps: 24
+  num_inference_steps: ${eval_num_inference_steps}
+  sigma_shift: null
+  text_cfg_scale: 1.0
+  negative_prompt: ""
+  rand_device: cpu
+  tiled: false
+  timing_enabled: false
+  # Always fetch an observation for replanning. Sample this fraction of
+  # episodes to fetch observations at every action step for smooth eval video.
+  skip_get_obs_within_replan: true
+  full_obs_episode_probability: 0.1
+  visualize_future_video: false
+  future_video_max_episodes: 1
+
+  # Runtime inputs
+  dataset_stats_path: null
+  device: cuda
+
+MULTIRUN:
+  enabled: false
+  num_gpus: 8
+  max_tasks_per_gpu: 2

@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - override /data: robotwin
+  - override /model: rewam
+  - _self_
+
+batch_size: 16
+num_workers: 8
+num_epochs: 5
+learning_rate: 1.0e-4
+weight_decay: 1.0e-2

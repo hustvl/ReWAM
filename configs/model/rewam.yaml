@@ -1,0 +1,68 @@
+_target_: rewam.runtime.create_rewam
+text_encoder:
+  weights:
+    model_id: DiffSynth-Studio/Wan-Series-Converted-Safetensors
+    origin_file_pattern: models_t5_umt5-xxl-enc-bf16.safetensors
+  tokenizer:
+    model_id: Wan-AI/Wan2.1-T2V-1.3B
+    origin_file_pattern: google/umt5-xxl/
+  max_length: 128
+load_text_encoder: false
+proprio_dim: ${data.train.shape_meta.state.0.shape}
+camera_layout: ${data.train.concat_multi_camera}
+vision_encoder:
+  hub_repo: facebookresearch/dinov3:main
+  model_name: dinov3_vitl16
+  output_dim: 1024
+feature_calibration:
+  layers: [11, 13, 15, 17, 19, 21, 23]
+temporal_bottleneck:
+  patch_size: [2, 2, 2]
+  output_dim: 128
+  gradient_mode: action_only
+  qk_dim: 512
+  num_heads: 8
+  norm_eps: 1.0e-06
+  rope_base: 10000.0
+  position_scale: 16.0
+  causal_normalization:
+    eps: 1.0e-05
+    momentum: 0.1
+reconstruction_probe:
+  loss_weight: 1.0
+  decoder_path: ${oc.env:RAEv2_DECODER_PATH,null}
+world_dit_config:
+  patch_size: [1, 1, 1]
+  in_dim: ${model.temporal_bottleneck.output_dim}
+  hidden_dim: 2048
+  ffn_dim: 8192
+  freq_dim: 256
+  text_dim: 4096
+  out_dim: ${model.temporal_bottleneck.output_dim}
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  eps: 1.0e-06
+action_dit_config:
+  action_dim: ${data.train.shape_meta.action.0.shape}
+  hidden_dim: 1024
+  ffn_dim: 4096
+  num_heads: 24
+  attn_head_dim: 128
+  num_layers: 30
+  text_dim: 4096
+  freq_dim: 256
+  eps: 1.0e-06
+world_scheduler:
+  train_shift: auto
+  infer_shift: auto
+  shift_base_dim: 4096
+  shift_scope: future_tokens
+  num_train_timesteps: 1000
+action_scheduler:
+  train_shift: 5.0
+  infer_shift: 5.0
+  num_train_timesteps: 1000
+loss:
+  lambda_world: 1.0
+  lambda_action: 1.0

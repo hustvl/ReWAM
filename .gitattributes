@@ -1,0 +1,2 @@
+# Blank context lines in unified patches contain a required leading space.
+evaluation/robotwin/patches/*.patch -whitespace
