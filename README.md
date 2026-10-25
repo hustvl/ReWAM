@@ -22,7 +22,7 @@ Wei Sui<sup>2</sup>, Wenyu Liu<sup>1</sup>, Xinggang Wang<sup>1</sup><br>
 
 ReWAM learns robot actions and future world states in a shared representation space. The `main` branch of this repository contains the complete framework used for our RoboTwin training and evaluation.
 
-We also provide a [starVLA_plugin](https://github.com/hustvl/GaussTR/tree/starVLA_plugin) implementation of ReWAM. The RoboDojo results reported in our paper were obtained using our internal data and a training pipeline built on StarVLA. We have ported the core code to this standalone plugin, but have not evaluated its performance on RoboDojo.
+We also provide a [starVLA_plugin](https://github.com/hustvl/ReWAM/tree/starVLA_plugin) implementation of ReWAM. The RoboDojo results reported in our paper were obtained using our internal data and a training pipeline built on StarVLA. We have ported the core code to this standalone plugin, but have not evaluated its performance on RoboDojo.
 
 ## Setup
 
