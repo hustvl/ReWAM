@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ReWAM: Rethinking Representations for World-Action Modeling. Action-grounded representations for robot policies and world prediction, without generative video pre-training.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="ReWAM — Rethinking Representations for World-Action Modeling">
+  <meta property="og:description" content="Let the policy shape what the representation encodes, and the world model learn how it evolves.">
+  <meta property="og:type" content="website">
+  <!-- Public project URL follows the release README; update if deployment changes. -->
+  <link rel="canonical" href="https://hustvl.github.io/ReWAM/">
+  <link rel="sitemap" type="application/xml" href="./sitemap.xml">
+  <meta property="og:url" content="https://hustvl.github.io/ReWAM/">
+  <meta property="og:site_name" content="ReWAM">
+  <meta property="og:image" content="https://hustvl.github.io/ReWAM/static/images/overview.png">
+  <meta property="og:image:width" content="2048">
+  <meta property="og:image:height" content="901">
+  <meta property="og:image:alt" content="ReWAM overview: action-grounded representations for world-action modeling">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ReWAM: Rethinking Representations for World-Action Modeling">
+  <meta name="twitter:description" content="Action-grounded representations for robot policies and world prediction, without generative video pre-training.">
+  <meta name="twitter:image" content="https://hustvl.github.io/ReWAM/static/images/overview.png">
+  <meta name="twitter:image:alt" content="ReWAM method overview">
+  <meta name="citation_title" content="Rethinking Representations for World-Action Modeling">
+  <meta name="citation_author" content="Haoyi Jiang">
+  <meta name="citation_author" content="Liu Liu">
+  <meta name="citation_author" content="Xinjiang Wang">
+  <meta name="citation_author" content="Zhihao Sun">
+  <meta name="citation_author" content="Zequn Chen">
+  <meta name="citation_author" content="Sen Wang">
+  <meta name="citation_author" content="Xinjie Wang">
+  <meta name="citation_author" content="Xia Chen">
+  <meta name="citation_author" content="Jingfeng Yao">
+  <meta name="citation_author" content="Weiheng Zhao">
+  <meta name="citation_author" content="Shanglin Yuan">
+  <meta name="citation_author" content="Zhizhong Su">
+  <meta name="citation_author" content="Wei Sui">
+  <meta name="citation_author" content="Wenyu Liu">
+  <meta name="citation_author" content="Xinggang Wang">
+  <meta name="citation_publication_date" content="2026/09/29">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://hustvl.github.io/ReWAM/#paper",
+  "name": "Rethinking Representations for World-Action Modeling",
+  "headline": "Rethinking Representations for World-Action Modeling",
+  "url": "https://hustvl.github.io/ReWAM/",
+  "sameAs": "https://arxiv.org/abs/2609.38163",
+  "identifier": "arXiv:2609.38163",
+  "datePublished": "2026-09-29",
+  "inLanguage": "en",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Haoyi Jiang"
+    },
+    {
+      "@type": "Person",
+      "name": "Liu Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Xinjiang Wang"
+    },
+    {
+      "@type": "Person",
+      "name": "Zhihao Sun"
+    },
+    {
+      "@type": "Person",
+      "name": "Zequn Chen"
+    },
+    {
+      "@type": "Person",
+      "name": "Sen Wang"
+    },
+    {
+      "@type": "Person",
+      "name": "Xinjie Wang"
+    },
+    {
+      "@type": "Person",
+      "name": "Xia Chen"
+    },
+    {
+      "@type": "Person",
+      "name": "Jingfeng Yao"
+    },
+    {
+      "@type": "Person",
+      "name": "Weiheng Zhao"
+    },
+    {
+      "@type": "Person",
+      "name": "Shanglin Yuan"
+    },
+    {
+      "@type": "Person",
+      "name": "Zhizhong Su"
+    },
+    {
+      "@type": "Person",
+      "name": "Wei Sui"
+    },
+    {
+      "@type": "Person",
+      "name": "Wenyu Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Xinggang Wang"
+    }
+  ],
+  "image": "https://hustvl.github.io/ReWAM/static/images/overview.png",
+  "description": "ReWAM calibrates frozen DINO features and forms compact temporal world states shaped by action-loss gradients for joint robot policy learning and world prediction.",
+  "isAccessibleForFree": true,
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://arxiv.org/pdf/2609.38163",
+    "encodingFormat": "application/pdf"
+  }
+}
+  </script>
+  <title>ReWAM | Rethinking Representations for World-Action Modeling</title>
+  <link rel="icon" href="./static/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./static/css/index.css?v=17">
+  <script src="./static/js/index.js?v=9" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Main navigation">
+    <a class="wordmark" href="#">ReWAM</a>
+    <div class="nav-links"><a href="#method">Method</a><a href="#results">Results</a><a href="#real-world">Real world</a><a href="#citation">Citation</a></div>
+    <a class="nav-paper" href="https://arxiv.org/abs/2609.38163">Read paper <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+<main id="main">
+<section class="hero wrap">
+  <h1><span class="hero-name">ReWAM</span><br>Rethinking Representations<br>for World-Action Modeling</h1>
+  <p class="hero-subtitle">Let the policy shape <em>what</em> the representation encodes,<br class="desktop-break"> and the world model learn <em>how</em> it evolves.</p>
+  <div class="authors"><span><a href="https://scholar.google.com/citations?user=_45BVtQAAAAJ">Haoyi Jiang</a><sup>1,*</sup></span>, <span><a href="https://scholar.google.com/citations?user=5XNNC64AAAAJ">Liu Liu</a><sup>3,†</sup></span>, <span>Xinjiang Wang<sup>3</sup></span>, <span>Zhihao Sun<sup>4</sup></span>, <span>Zequn Chen<sup>3</sup></span>, <span>Sen Wang<sup>5</sup></span>, <span>Xinjie Wang<sup>3</sup></span>, <span>Xia Chen<sup>3</sup></span>,<br> <span>Jingfeng Yao<sup>1</sup></span>, <span>Weiheng Zhao<sup>1</sup></span>, <span>Shanglin Yuan<sup>1</sup></span>, <span>Zhizhong Su<sup>3</sup></span>, <span>Wei Sui<sup>2</sup></span>, <span>Wenyu Liu<sup>1</sup></span>, <span><a href="https://xwcv.github.io/">Xinggang Wang</a><sup>1,‡</sup></span></div>
+  <div class="affiliations"><span><sup>1</sup> Huazhong University of Science &amp; Technology</span><span><sup>2</sup> D-Robotics</span><span><sup>3</sup> Horizon Robotics</span><span><sup>4</sup> Fudan University</span><span><sup>5</sup> Xi’an Jiaotong University</span></div>
+  <p class="author-notes">* Intern at D-Robotics &nbsp; † Project leader &nbsp; ‡ Corresponding author</p>
+  <div class="publication-links" aria-label="Project resources">
+    <a class="resource-link" href="https://arxiv.org/pdf/2609.38163"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4M9 12h6M9 16h6"/></svg><span>Paper</span></a>
+    <a class="resource-link" href="https://github.com/hustvl/ReWAM"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 20"/></svg><span>Code</span></a>
+    <a class="resource-link" href="https://huggingface.co/hustvl/ReWAM"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5zM3 8v9l9 5 9-5V8M12 13v9"/></svg><span>Model</span></a>
+    <a class="resource-link" href="#real-world"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></svg><span>Real-world</span></a>
+  </div>
+</section>
+<section class="wrap overview" aria-labelledby="overview-title">
+  <div class="figure-topline"><span id="overview-title">A representation-first approach to robot learning</span><a class="figure-label" href="./static/images/overview.png" aria-label="Open full-size ReWAM overview figure">Enlarge figure <span aria-hidden="true">↗</span></a></div>
+  <figure><a href="./static/images/overview.png" aria-label="Open full-size ReWAM overview figure"><img src="./static/images/overview.png" width="2048" height="901" alt="Comparison of Video-VAE latents, frozen DINO features, and ReWAM. ReWAM calibrates DINO features and forms compact states through a Temporal Representation Bottleneck shaped by action-loss gradients."></a><figcaption><strong>Overview of representations for world-action modeling.</strong> ReWAM forms compact world states from calibrated DINO features through a Temporal Representation Bottleneck (TRB). Action-Grounded Representation Shaping (AGRS) updates the TRB through action-loss gradients, while the world model learns state transitions.</figcaption></figure>
+</section>
+<section class="wrap metrics" aria-label="Research highlights">
+  <div><strong>93.6<span>%</span></strong><p>RoboTwin 2.0 success</p><small>Both clean and random settings</small></div>
+  <div><strong>12.29</strong><p>RoboDojo average score</p><small>With ~600 hours of embodied pre-training</small></div>
+  <div><strong>91.7<span>%</span></strong><p>Real-robot success</p><small>55 successful trials out of 60</small></div>
+  <div><strong>0</strong><p>Generative video pre-training</p><small>Built on frozen DINOv3 features</small></div>
+</section>
+<section class="section wrap abstract" id="abstract">
+  <div><p class="eyebrow">THE CENTRAL QUESTION</p><h2>What makes a good<br>world-action representation?</h2></div>
+  <div class="prose"><p>World-action models need a shared space that supports both predicting future observations and choosing robot actions. Visual reconstruction quality alone does not tell us how useful that space is for control.</p><p>ReWAM starts from frozen DINO features, calibrates them for dynamics learning, and organizes them into temporal world states. The action objective shapes these states; the world objective learns their evolution. This division of roles supports strong robot policies without generative video pre-training.</p><a class="text-link" href="https://arxiv.org/html/2609.38163v1">Read the full study <span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="tinted" id="method"><div class="section wrap">
+  <p class="eyebrow">THE METHOD</p><h2>Perception, organized for action.</h2><p class="section-lead">Three components turn perceptual features into a space for prediction and control.</p>
+  <div class="method-grid">
+    <article class="method-card"><span class="step">01 / CALIBRATE</span><div class="mini-visual layers" aria-hidden="true"><i></i><i></i><i></i><b>F</b></div><h3>Feature Calibration</h3><p>Multi-layer aggregation, normalization, and a representation-aware noise schedule prepare frozen DINO features for diffusion-based dynamics modeling.</p></article>
+    <article class="method-card"><span class="step">02 / COMPRESS</span><div class="mini-visual tokens" aria-hidden="true"><span>t − 1</span><span>t</span><b>→</b><span>z</span></div><h3>Temporal Representation Bottleneck</h3><p>A trainable bottleneck combines paired frames across camera views into compact, 128-dimensional world-state tokens.</p></article>
+    <article class="method-card"><span class="step">03 / GROUND</span><div class="mini-visual gradients">
+      <svg viewBox="0 0 340 105" role="img" aria-labelledby="agrs-diagram-title">
+        <title id="agrs-diagram-title">Action-loss gradients update the TRB; world-loss gradients stop before the TRB.</title>
+        <g transform="translate(0 13)">
+        <g fill="var(--surface)" stroke="#d9dde0">
+          <rect x="8" y="18" width="92" height="42" rx="10"/>
+          <rect x="140" y="18" width="60" height="42" rx="10" fill="var(--orange-ink)" stroke="var(--orange-ink)"/>
+        </g>
+        <rect x="240" y="18" width="92" height="42" rx="10" fill="var(--surface)" stroke="#d9dde0"/>
+        <g class="gradient-label" fill="currentColor" text-anchor="middle">
+          <text x="54" y="44">Action loss</text><text class="gradient-state" x="170" y="44">TRB</text><text x="286" y="44">World loss</text>
+        </g>
+        <g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M108 39h24m-5-5 5 5-5 5" stroke="var(--orange)"/>
+          <path d="M232 39h-24" stroke="#959ba0" stroke-dasharray="3 3"/>
+          <path d="M208 30v18" stroke="#959ba0"/>
+        </g>
+        <g class="gradient-note" text-anchor="middle">
+          <text x="112" y="85">updates</text><text x="224" y="85">stop-gradient</text>
+        </g>
+        </g>
+      </svg>
+    </div><h3>Action-Grounded Representation Shaping</h3><p>Only action-loss gradients update the bottleneck. World-loss gradients stop at the representations, allowing the world model to learn their dynamics.</p></article>
+  </div>
+</div></section>
+<section class="section wrap" id="results">
+  <div class="section-heading"><div><p class="eyebrow">SIMULATION BENCHMARKS</p><h2>From representations to results.</h2></div><a class="text-link" href="https://arxiv.org/html/2609.38163v1#S4">Experimental details ↗</a></div>
+  <div class="results-grid"><article class="result-panel"><h3>RoboTwin 2.0</h3><p>50 tasks · 100 evaluation episodes per task and setting</p><div class="score-pair"><div><strong>93.6%</strong><span>Clean</span></div><div><strong>93.6%</strong><span>Random</span></div></div><p class="panel-note">No embodied pre-training or generative video pre-training. Main results use five training epochs.</p></article>
+  <article class="result-panel"><h3>RoboDojo</h3><p>Five capability categories · 35 training tasks</p><div class="table-scroll" role="region" aria-label="RoboDojo results" tabindex="0"><table><caption>Average results with and without embodied pre-training</caption><thead><tr><th scope="col">Method / embodied pre-training</th><th scope="col">Score ↑</th><th scope="col">Success ↑</th></tr></thead><tbody><tr><th scope="row">Fast-WAM / none</th><td>3.48</td><td>2.03%</td></tr><tr class="ours"><th scope="row">ReWAM / none</th><td>9.42</td><td>5.82%</td></tr><tr><th scope="row">Fast-WAM / ~600 h</th><td>10.95</td><td>6.80%</td></tr><tr class="ours"><th scope="row">ReWAM / ~600 h</th><td>12.29</td><td>8.28%</td></tr></tbody></table></div><p class="panel-note">The two ~600 h models use the same embodied pre-training data.</p></article></div>
+  <details class="ablation"><summary>Why does representation design matter? <span class="ablation-toggle" aria-hidden="true"><span class="when-closed">View ablations +</span><span class="when-open">Hide ablations −</span></span></summary><div class="ablation-content"><p>RoboTwin 2.0 success rates under a matched <strong>one-epoch</strong> budget. These experiments use a different budget from the main results above.</p><div class="table-scroll" role="region" aria-label="Representation ablations" tabindex="0"><table><thead><tr><th scope="col">Representation</th><th scope="col">Clean ↑</th><th scope="col">Random ↑</th></tr></thead><tbody><tr><th scope="row">Raw DINO features</th><td>71.00%</td><td>71.54%</td></tr><tr><th scope="row">Feature Calibration</th><td>83.90%</td><td>83.03%</td></tr><tr><th scope="row">Fixed random temporal projection</th><td>86.76%</td><td>85.94%</td></tr><tr class="ours"><th scope="row">ReWAM with AGRS</th><td>90.70%</td><td>89.12%</td></tr></tbody></table></div></div></details>
+  <p class="source-note">Results: <a href="https://arxiv.org/html/2609.38163v1#S4">ReWAM paper, Section 4</a>. RoboDojo scores measure partial progress; success rates measure full completion.</p>
+</section>
+<section class="tinted" id="real-world"><div class="section wrap">
+  <p class="eyebrow">ON PHYSICAL HARDWARE</p><h2>Three tasks. A bimanual robot.</h2><p class="section-lead">Evaluated on the Piper platform over 20 trials per task, following embodied pre-training and task-specific post-training.</p>
+  <div class="demo-grid">
+    <article class="demo-card" data-demo="collect-objects"><div class="video-slot"><span class="video-icon" aria-hidden="true">▷</span><span>Demonstration video coming soon</span></div><div class="demo-copy"><span class="step">01 / COLLECT OBJECTS</span><h3>Pick, place, repeat.</h3><p>Collect tabletop objects into a basket.</p></div></article>
+    <article class="demo-card" data-demo="fold-clothes"><div class="video-slot"><span class="video-icon" aria-hidden="true">▷</span><span>Demonstration video coming soon</span></div><div class="demo-copy"><span class="step">02 / FOLD CLOTHES</span><h3>Handle the deformable.</h3><p>Manipulate and fold a garment.</p></div></article>
+    <article class="demo-card" data-demo="unpack-lunchbox"><div class="video-slot"><span class="video-icon" aria-hidden="true">▷</span><span>Demonstration video coming soon</span></div><div class="demo-copy"><span class="step">03 / UNPACK LUNCHBOX</span><h3>Go beyond a single step.</h3><p>Open a lunchbox and retrieve food.</p></div></article>
+  </div>
+</div></section>
+<section class="section wrap citation-section" id="citation"><div class="section-heading"><div><p class="eyebrow">BUILD ON THIS WORK</p><h2>Citation</h2></div><button class="button copy-button" type="button" data-copy-citation>Copy BibTeX</button></div><pre><code id="bibtex">@misc{jiang2026rewam,
+  title={Rethinking Representations for World-Action Modeling},
+  author={Haoyi Jiang and Liu Liu and Xinjiang Wang and Zhihao Sun and Zequn Chen and Sen Wang and Xinjie Wang and Xia Chen and Jingfeng Yao and Weiheng Zhao and Shanglin Yuan and Zhizhong Su and Wei Sui and Wenyu Liu and Xinggang Wang},
+  journal={arXiv preprint arXiv:2609.38163},
+  year={2026},
+  url={https://arxiv.org/abs/2609.38163}
+}</code></pre><p class="copy-status" role="status" aria-live="polite"></p></section>
+</main>
+</body>
+</html>
