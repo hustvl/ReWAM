@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rewam-starvla"
+version = "0.1.0"
+description = "ReWAM networks with an optional StarVLA framework adapter"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["torch>=2.4", "diffusers>=0.38", "numpy", "einops", "omegaconf>=2.3"]
+
+[project.optional-dependencies]
+starvla = ["starVLA"]
+text = ["transformers", "sentencepiece"]
+dev = ["pytest", "black", "isort", "ruff"]
+
+[project.scripts]
+rewam-starvla = "rewam_starvla.run:main"
+
+[tool.setuptools.packages.find]
+include = ["rewam_starvla*"]
+
+[tool.black]
+line-length = 110
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint.isort]
+known-first-party = ["rewam_starvla"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.isort]
+profile = "black"
+line_length = 110
+known_first_party = ["rewam_starvla"]

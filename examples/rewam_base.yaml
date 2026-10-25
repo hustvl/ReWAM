@@ -1,0 +1,72 @@
+framework:
+  name: ReWAM
+  compile_action_infer: true
+  vision_encoder:
+    model_name: dinov3_vitl16
+    hub_repo: facebookresearch/dinov3:main
+    output_dim: 1024
+  feature_calibration:
+    layers: [11, 13, 15, 17, 19, 21, 23]
+  temporal_bottleneck:
+    patch_size: [2, 2, 2]
+    output_dim: 128
+    qk_dim: 1024
+    num_heads: 8
+    gradient_mode: action_only
+    norm_eps: 1.0e-06
+    rope_base: 10000.0
+    position_scale: 16.0
+    causal_normalization:
+      eps: 1.0e-05
+      momentum: 0.1
+  reconstruction_probe:
+    loss_weight: 1.0
+    decoder_path: ${oc.env:RAEv2_DECODER_PATH,null}
+  world_dit_config:
+    hidden_dim: 2048
+    ffn_dim: 8192
+    freq_dim: 256
+    text_dim: 4096
+    num_heads: 24
+    attn_head_dim: 128
+    num_layers: 30
+    eps: 1.0e-06
+    patch_size: [1, 1, 1]
+  action_dit_config:
+    action_dim: 14
+    hidden_dim: 1024
+    ffn_dim: 4096
+    text_dim: 4096
+    freq_dim: 256
+    num_heads: 24
+    attn_head_dim: 128
+    num_layers: 30
+    eps: 1.0e-06
+  load_text_encoder: false
+  text_encoder:
+    pretrained_path: null
+    prompt_template: 'A video recorded from a robot''s point of view executing the following instruction: {lang}'
+    max_length: 128
+  mot_checkpoint_mixed_attn: false
+  world_scheduler:
+    train_shift: auto
+    infer_shift: auto
+    shift_base_dim: 4096
+    shift_scope: future_tokens
+    num_train_timesteps: 1000
+  action_scheduler:
+    train_shift: 5.0
+    infer_shift: 5.0
+    num_train_timesteps: 1000
+    num_inference_steps: 20
+  loss:
+    lambda_world: 1.0
+    lambda_action: 1.0
+  proprio_dim: 14
+
+datasets:
+  vla_data:
+    action_horizon: 64
+    observation_stride: 8
+    num_context_frames: ${framework.temporal_bottleneck.patch_size.0}
+    history_repeat_probability: 0.1
