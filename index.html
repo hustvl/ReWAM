@@ -14,8 +14,8 @@
   <meta property="og:url" content="https://hustvl.github.io/ReWAM/">
   <meta property="og:site_name" content="ReWAM">
   <meta property="og:image" content="https://hustvl.github.io/ReWAM/static/images/overview.png">
-  <meta property="og:image:width" content="2048">
-  <meta property="og:image:height" content="901">
+  <meta property="og:image:width" content="6509">
+  <meta property="og:image:height" content="2944">
   <meta property="og:image:alt" content="ReWAM overview: action-grounded representations for world-action modeling">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ReWAM: Rethinking Representations for World-Action Modeling">
@@ -124,9 +124,9 @@
 }
   </script>
   <title>ReWAM | Rethinking Representations for World-Action Modeling</title>
-  <link rel="icon" href="./static/images/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./static/css/index.css?v=17">
-  <script src="./static/js/index.js?v=9" defer></script>
+  <link rel="icon" href="./static/images/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="stylesheet" href="./static/css/index.css?v=30">
+  <script src="./static/js/index.js?v=11" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -151,9 +151,8 @@
     <a class="resource-link" href="#real-world"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></svg><span>Real-world</span></a>
   </div>
 </section>
-<section class="wrap overview" aria-labelledby="overview-title">
-  <div class="figure-topline"><span id="overview-title">A representation-first approach to robot learning</span><a class="figure-label" href="./static/images/overview.png" aria-label="Open full-size ReWAM overview figure">Enlarge figure <span aria-hidden="true">↗</span></a></div>
-  <figure><a href="./static/images/overview.png" aria-label="Open full-size ReWAM overview figure"><img src="./static/images/overview.png" width="2048" height="901" alt="Comparison of Video-VAE latents, frozen DINO features, and ReWAM. ReWAM calibrates DINO features and forms compact states through a Temporal Representation Bottleneck shaped by action-loss gradients."></a><figcaption><strong>Overview of representations for world-action modeling.</strong> ReWAM forms compact world states from calibrated DINO features through a Temporal Representation Bottleneck (TRB). Action-Grounded Representation Shaping (AGRS) updates the TRB through action-loss gradients, while the world model learns state transitions.</figcaption></figure>
+<section class="wrap overview" aria-label="Method overview">
+  <figure><a href="./static/images/overview.png" aria-label="Open full-size ReWAM overview figure"><img src="./static/images/overview-1120.webp?v=2" srcset="./static/images/overview-1120.webp?v=2 1120w, ./static/images/overview-2240.webp?v=2 2240w" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 40px), (max-width: 1184px) calc(100vw - 64px), 1120px" width="6509" height="2944" decoding="async" alt="Comparison of Video-VAE latents, frozen DINO features, and ReWAM. ReWAM calibrates DINO features and forms compact states through a Temporal Representation Bottleneck shaped by action-loss gradients."></a><figcaption><strong>Overview of representations for world-action modeling.</strong> ReWAM forms compact world states from calibrated DINO features through a Temporal Representation Bottleneck (TRB). Action-Grounded Representation Shaping (AGRS) updates the TRB through action-loss gradients, while the world model learns state transitions.</figcaption></figure>
 </section>
 <section class="wrap metrics" aria-label="Research highlights">
   <div><strong>93.6<span>%</span></strong><p>RoboTwin 2.0 success</p><small>Both clean and random settings</small></div>
@@ -174,18 +173,18 @@
       <svg viewBox="0 0 340 105" role="img" aria-labelledby="agrs-diagram-title">
         <title id="agrs-diagram-title">Action-loss gradients update the TRB; world-loss gradients stop before the TRB.</title>
         <g transform="translate(0 13)">
-        <g fill="var(--surface)" stroke="#d9dde0">
+        <g fill="var(--gray-module)">
           <rect x="8" y="18" width="92" height="42" rx="10"/>
-          <rect x="140" y="18" width="60" height="42" rx="10" fill="var(--orange-ink)" stroke="var(--orange-ink)"/>
+          <rect x="140" y="18" width="60" height="42" rx="10" fill="var(--orange)"/>
         </g>
-        <rect x="240" y="18" width="92" height="42" rx="10" fill="var(--surface)" stroke="#d9dde0"/>
+        <rect x="240" y="18" width="92" height="42" rx="10" fill="var(--gray-module)"/>
         <g class="gradient-label" fill="currentColor" text-anchor="middle">
           <text x="54" y="44">Action loss</text><text class="gradient-state" x="170" y="44">TRB</text><text x="286" y="44">World loss</text>
         </g>
         <g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M108 39h24m-5-5 5 5-5 5" stroke="var(--orange)"/>
-          <path d="M232 39h-24" stroke="#959ba0" stroke-dasharray="3 3"/>
-          <path d="M208 30v18" stroke="#959ba0"/>
+          <path d="M232 39h-24" stroke="var(--gray)" stroke-dasharray="3 3"/>
+          <path d="M208 30v18" stroke="var(--gray)"/>
         </g>
         <g class="gradient-note" text-anchor="middle">
           <text x="112" y="85">updates</text><text x="224" y="85">stop-gradient</text>
@@ -199,18 +198,17 @@
   <div class="section-heading"><div><p class="eyebrow">SIMULATION BENCHMARKS</p><h2>From representations to results.</h2></div><a class="text-link" href="https://arxiv.org/html/2609.38163v1#S4">Experimental details ↗</a></div>
   <div class="results-grid"><article class="result-panel"><h3>RoboTwin 2.0</h3><p>50 tasks · 100 evaluation episodes per task and setting</p><div class="score-pair"><div><strong>93.6%</strong><span>Clean</span></div><div><strong>93.6%</strong><span>Random</span></div></div><p class="panel-note">No embodied pre-training or generative video pre-training. Main results use five training epochs.</p></article>
   <article class="result-panel"><h3>RoboDojo</h3><p>Five capability categories · 35 training tasks</p><div class="table-scroll" role="region" aria-label="RoboDojo results" tabindex="0"><table><caption>Average results with and without embodied pre-training</caption><thead><tr><th scope="col">Method / embodied pre-training</th><th scope="col">Score ↑</th><th scope="col">Success ↑</th></tr></thead><tbody><tr><th scope="row">Fast-WAM / none</th><td>3.48</td><td>2.03%</td></tr><tr class="ours"><th scope="row">ReWAM / none</th><td>9.42</td><td>5.82%</td></tr><tr><th scope="row">Fast-WAM / ~600 h</th><td>10.95</td><td>6.80%</td></tr><tr class="ours"><th scope="row">ReWAM / ~600 h</th><td>12.29</td><td>8.28%</td></tr></tbody></table></div><p class="panel-note">The two ~600 h models use the same embodied pre-training data.</p></article></div>
-  <details class="ablation"><summary>Why does representation design matter? <span class="ablation-toggle" aria-hidden="true"><span class="when-closed">View ablations +</span><span class="when-open">Hide ablations −</span></span></summary><div class="ablation-content"><p>RoboTwin 2.0 success rates under a matched <strong>one-epoch</strong> budget. These experiments use a different budget from the main results above.</p><div class="table-scroll" role="region" aria-label="Representation ablations" tabindex="0"><table><thead><tr><th scope="col">Representation</th><th scope="col">Clean ↑</th><th scope="col">Random ↑</th></tr></thead><tbody><tr><th scope="row">Raw DINO features</th><td>71.00%</td><td>71.54%</td></tr><tr><th scope="row">Feature Calibration</th><td>83.90%</td><td>83.03%</td></tr><tr><th scope="row">Fixed random temporal projection</th><td>86.76%</td><td>85.94%</td></tr><tr class="ours"><th scope="row">ReWAM with AGRS</th><td>90.70%</td><td>89.12%</td></tr></tbody></table></div></div></details>
-  <p class="source-note">Results: <a href="https://arxiv.org/html/2609.38163v1#S4">ReWAM paper, Section 4</a>. RoboDojo scores measure partial progress; success rates measure full completion.</p>
+  <details class="ablation"><summary>Why does representation design matter?</summary><div class="ablation-content"><p>RoboTwin 2.0 success rates under a matched <strong>one-epoch</strong> budget. These experiments use a different budget from the main results above.</p><div class="table-scroll" role="region" aria-label="Representation ablations" tabindex="0"><table><thead><tr><th scope="col">Representation</th><th scope="col">Clean ↑</th><th scope="col">Random ↑</th></tr></thead><tbody><tr><th scope="row">Raw DINO features</th><td>71.00%</td><td>71.54%</td></tr><tr><th scope="row">Feature Calibration</th><td>83.90%</td><td>83.03%</td></tr><tr><th scope="row">Fixed random temporal projection</th><td>86.76%</td><td>85.94%</td></tr><tr class="ours"><th scope="row">ReWAM with AGRS</th><td>90.70%</td><td>89.12%</td></tr></tbody></table></div></div></details>
 </section>
 <section class="tinted" id="real-world"><div class="section wrap">
   <p class="eyebrow">ON PHYSICAL HARDWARE</p><h2>Three tasks. A bimanual robot.</h2><p class="section-lead">Evaluated on the Piper platform over 20 trials per task, following embodied pre-training and task-specific post-training.</p>
   <div class="demo-grid">
-    <article class="demo-card" data-demo="collect-objects"><div class="video-slot"><span class="video-icon" aria-hidden="true">▷</span><span>Demonstration video coming soon</span></div><div class="demo-copy"><span class="step">01 / COLLECT OBJECTS</span><h3>Pick, place, repeat.</h3><p>Collect tabletop objects into a basket.</p></div></article>
-    <article class="demo-card" data-demo="fold-clothes"><div class="video-slot"><span class="video-icon" aria-hidden="true">▷</span><span>Demonstration video coming soon</span></div><div class="demo-copy"><span class="step">02 / FOLD CLOTHES</span><h3>Handle the deformable.</h3><p>Manipulate and fold a garment.</p></div></article>
-    <article class="demo-card" data-demo="unpack-lunchbox"><div class="video-slot"><span class="video-icon" aria-hidden="true">▷</span><span>Demonstration video coming soon</span></div><div class="demo-copy"><span class="step">03 / UNPACK LUNCHBOX</span><h3>Go beyond a single step.</h3><p>Open a lunchbox and retrieve food.</p></div></article>
+    <article class="demo-card"><video controls muted loop playsinline preload="none" width="960" height="720" poster="./static/images/collect_objects-poster.webp" aria-label="Collect objects: robot demonstration"><source src="./static/videos/collect_objects.mp4" type="video/mp4"><a href="./static/videos/collect_objects.mp4">Download the collect objects demonstration</a></video><div class="demo-copy"><span class="step">01 / COLLECT OBJECTS</span><h3>Pick, place, repeat.</h3><p>Collect tabletop objects into a basket.</p></div></article>
+    <article class="demo-card"><video controls muted loop playsinline preload="none" width="960" height="720" poster="./static/images/fold_clothes-poster.webp" aria-label="Fold clothes: robot demonstration"><source src="./static/videos/fold_clothes.mp4" type="video/mp4"><a href="./static/videos/fold_clothes.mp4">Download the fold clothes demonstration</a></video><div class="demo-copy"><span class="step">02 / FOLD CLOTHES</span><h3>Handle the deformable.</h3><p>Manipulate and fold a garment.</p></div></article>
+    <article class="demo-card"><video controls muted loop playsinline preload="none" width="960" height="720" poster="./static/images/unpack_lunchbox-poster.webp" aria-label="Unpack lunchbox: robot demonstration"><source src="./static/videos/unpack_lunchbox.mp4" type="video/mp4"><a href="./static/videos/unpack_lunchbox.mp4">Download the unpack lunchbox demonstration</a></video><div class="demo-copy"><span class="step">03 / UNPACK LUNCHBOX</span><h3>Go beyond a single step.</h3><p>Open a lunchbox and retrieve food.</p></div></article>
   </div>
 </div></section>
-<section class="section wrap citation-section" id="citation"><div class="section-heading"><div><p class="eyebrow">BUILD ON THIS WORK</p><h2>Citation</h2></div><button class="button copy-button" type="button" data-copy-citation>Copy BibTeX</button></div><pre><code id="bibtex">@misc{jiang2026rewam,
+<section class="section wrap citation-section" id="citation"><div class="section-heading"><div><p class="eyebrow">BUILD ON THIS WORK</p><h2>Citation</h2></div><button class="button copy-button" type="button" data-copy-citation>Copy BibTeX</button></div><pre><code id="bibtex">@article{jiang2026rewam,
   title={Rethinking Representations for World-Action Modeling},
   author={Haoyi Jiang and Liu Liu and Xinjiang Wang and Zhihao Sun and Zequn Chen and Sen Wang and Xinjie Wang and Xia Chen and Jingfeng Yao and Weiheng Zhao and Shanglin Yuan and Zhizhong Su and Wei Sui and Wenyu Liu and Xinggang Wang},
   journal={arXiv preprint arXiv:2609.38163},
@@ -218,5 +216,11 @@
   url={https://arxiv.org/abs/2609.38163}
 }</code></pre><p class="copy-status" role="status" aria-live="polite"></p></section>
 </main>
+<footer class="site-footer">
+  <div class="wrap footer-content">
+    <p>© 2026 ReWAM authors.</p>
+    <p>Website content is licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </div>
+</footer>
 </body>
 </html>

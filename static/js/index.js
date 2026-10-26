@@ -1,37 +1,5 @@
 'use strict';
 
-// Local demonstration videos. Paths are relative to index.html.
-const DEMOS = {
-  'collect-objects': { src: './static/videos/collect_objects.mp4' },
-  'fold-clothes': { src: './static/videos/fold_clothes.mp4' },
-  'unpack-lunchbox': { src: './static/videos/unpack_lunchbox.mp4' },
-};
-
-for (const [id, media] of Object.entries(DEMOS)) {
-  if (!media.src) continue;
-  const card = document.querySelector(`[data-demo="${id}"]`);
-  if (!card) continue;
-  const slot = card.querySelector('.video-slot');
-  const video = document.createElement('video');
-  video.controls = true;
-  video.muted = true;
-  video.loop = true;
-  video.playsInline = true;
-  video.preload = 'none';
-  video.setAttribute('aria-label', card.querySelector('h3').textContent);
-  const source = document.createElement('source');
-  source.src = media.src;
-  source.type = 'video/mp4';
-  video.append(source);
-  const fallback = document.createElement('a');
-  fallback.href = media.src;
-  fallback.textContent = 'Download demonstration video';
-  video.append(fallback);
-  video.addEventListener('error', () => video.replaceWith(slot), { once: true });
-  source.addEventListener('error', () => video.replaceWith(slot), { once: true });
-  slot.replaceWith(video);
-}
-
 const copyButton = document.querySelector('[data-copy-citation]');
 let copyResetTimer;
 copyButton.addEventListener('click', async () => {
@@ -54,7 +22,7 @@ copyButton.addEventListener('click', async () => {
   }
 });
 
-// Keep the visible chapter and sticky header in sync with reading position.
+// Keep the visible chapter in sync with reading position.
 const siteHeader = document.querySelector('.site-header');
 const chapterLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 const chapters = chapterLinks.map(link => ({
@@ -64,7 +32,6 @@ const chapters = chapterLinks.map(link => ({
 let navigationFrame;
 function updateNavigation() {
   navigationFrame = undefined;
-  siteHeader.classList.toggle('is-scrolled', window.scrollY > 8);
   const readingLine = siteHeader.getBoundingClientRect().bottom + 96;
   let current;
   for (const chapter of chapters) {
