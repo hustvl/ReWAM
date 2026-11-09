@@ -15,7 +15,7 @@ Wei Sui<sup>2</sup>, Wenyu Liu<sup>1</sup>, Xinggang Wang<sup>1</sup><br>
 
 [![Project page](https://img.shields.io/badge/project%20page-hustvl.github.io%2FReWAM-blue)](https://hustvl.github.io/ReWAM/)
 [![arXiv](https://img.shields.io/badge/arXiv-2609.38163-red?logo=arXiv&logoColor=red)](https://arxiv.org/abs/2609.38163)
-[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-TODO-yellow)]()
+[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow)](https://huggingface.co/hustvl/ReWAM)
 [![License: MIT](https://img.shields.io/github/license/hustvl/ReWAM)](LICENSE)
 
 </div>
